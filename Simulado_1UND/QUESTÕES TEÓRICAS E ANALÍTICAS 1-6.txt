@@ -1,0 +1,97 @@
+------------------------------------------------------------------------------------------------------
+Questão 01 A linguagem C diferencia rigorosamente letras maiúsculas e minúsculas na formação de nomes de identificadores e palavras-chave. Portanto, a alternativa correta é a c) Todos os pares de nomes ('valor'/'VALOR', 'peso'/'Peso', 'taxa'/'TAXA') representam identificadores totalmente distintos para o compilador.
+
+------------------------------------------------------------------------------------------------------
+
+Questão 02 O código apresenta vários erros comuns:
+
+- Ponto e vírgula após a diretiva de inclusão: #include <stdlib.h>; não deve ter ponto e vírgula no final.
+- Nome da função principal: A linguagem exige que o ponto de entrada se chame main (tudo minúsculo), e não Main().
+- Falta de aspas na string: O texto dentro do printf precisa estar entre aspas duplas, assim: printf("A idade do aluno eh: %d anos.\n", idade);.
+- Comando C++ em código C: A instrução cout << endl; pertence à linguagem C++, e não funciona em C padrão sem bibliotecas específicas.
+
+------------------------------------------------------------------------------------------------------
+
+Questão 03 Para resolver, precisamos lembrar que em C, quando temos várias atribuições na mesma linha, o programa resolve da direita para a esquerda. Valores iniciais: a=2, b=4, c=5, d=10.
+
+a += b + c;
+A expressão avalia primeiro b+c (4+5=9). Em seguida, soma isso ao valor de a: a=2+9=11.
+Estado atual: a=11, b=4, c=5, d=10.
+
+b *= c = d - 2;
+Resolvemos da direita para a esquerda: primeiro c=10-2=8. Agora c vale 8. Depois, multiplicamos b por esse novo valor de c: b=48=32.
+Estado atual: a=11, b=32, c=8, d=10.
+
+d %= a + 3;
+Primeiro somamos a+3 (11+3=14). O operador % calcula o resto da divisão. Então $d = 10 \pmod{14}$. Como 10 é menor que 14, o resto é o próprio 10.
+Estado atual: a=11, b=32, c=8, d=10.
+
+a += b += c += 5;
+Da direita para a esquerda:
+c=c+5=8+5=13
+
+b=b+13=32+13=45
+
+a=a+45=11+45=56
+
+Os valores finais são: a = 56, b = 45, c = 13 e d = 10.
+
+------------------------------------------------------------------------------------------------------
+
+Questão 04 Em C, uma expressão Verdadeira resulta em 1 e uma Falsa em 0. Valores: i=2, j=3, k=0, x=2.5, y=5.0.
+
+a) i < j + 2  2<3+2  2<5. Isso é Verdadeiro. Resultado: 1.
+
+b) 2 * i - 5 <= j - 4  22-53-4  4-5-1  -1-1. Isso é Verdadeiro. Resultado: 1.
+
+c) !k && (x + y >= 7.5)  !0 && (2.5 + 5.0 >= 7.5)  O ! inverte o falso (0) para verdadeiro (1). Fica 1 && (7.5 >= 7.5). Verdadeiro e Verdadeiro. Resultado: 1.
+
+d) !(i == j) || (y / x == 2.0)  !(2 == 3) || (5.0 / 2.5 == 2.0)  !(0) || (2.0 == 2.0)  1 || 1. Resultado: 1.
+
+e) i == 2 && j == 4 || k == 0  O operador && é avaliado antes do ||. (2 == 2 && 3 == 4) || 0 == 0  (1 && 0) || 1  0 || 1. Falso OU Verdadeiro resulta em Verdadeiro. Resultado: 1.
+
+------------------------------------------------------------------------------------------------------
+
+Questão 05
+
+a) A diferença essencial é que o laço while testa a condição no início. Se for falsa de cara, o código dentro dele pode executar zero vezes. O do-while testa a condição no final, o que garante que o código execute pelo menos 1 vez.
+
+b) O laço for é a melhor escolha (mais elegante e legível) quando você sabe antecipadamente o número exato de vezes que a repetição deve acontecer (um laço contado).
+
+c) Constitui um erro de lógica (o compilador não vai reclamar). Se a condicao for verdadeira, o ponto e vírgula atua como uma instrução vazia. O programa ficará preso em um "loop infinito" fazendo absolutamente nada, pois não há código dentro do laço para alterar a condição e torná-la falsa.
+
+------------------------------------------------------------------------------------------------------
+
+Questão 06
+
+a) O erro de compilação ocorre por causa do escopo da variável. A variável int soma = 0; foi criada dentro das chaves do laço for. Assim que o laço termina, essa variável é destruída da memória. Quando o printf tenta usá-la lá fora, ela não existe mais.
+
+b) O laço for inicia em 1. Ele executa normalmente para i=1,2,3,4. Quando i=5, o comando continue força o laço a pular a parte debaixo (a soma) e ir direto para a próxima rodada. Ele roda para i=6 e 7. Quando i=8, o break encerra o laço imediatamente, interrompendo tudo.
+
+c) Para corrigir, declaramos a soma antes do laço para ela não zerar toda vez e não sumir no final.
+
+
+
+C
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int i;
+    int soma = 0; // Correção: declarada fora do laço para acumular o valor
+
+    for (i = 1; i <= 10; i++) {
+        if (i == 5) continue;
+        if (i == 8) break;
+        soma += i * i; 
+    }
+
+    printf("Soma final = %d\n", soma);
+    system("PAUSE"); 
+    return 0;
+}
+
+
+Valores somados: 12+22+32+42+62+72=1+4+9+16+36+49. Resultado impresso: Soma final = 115.
+
+------------------------------------------------------------------------------------------------------
