@@ -1,0 +1,25 @@
+Resoluções Teóricas (Parte I)
+
+------------------------------------------------------------------
+Questão 1 - Estruturas de Repetição: A estrutura while avalia a condição antes da execução, podendo não executar nenhuma vez, enquanto o do-while garante pelo menos uma execução do bloco antes do teste. O uso do for é recomendado para contagens definidas, o while para repetições condicionais indeterminadas, e o do-while para situações onde a execução inicial é obrigatória, como menus e validações de dados. O trecho while (condicao); representa um erro lógico que cria um laço infinito sem corpo caso a condição seja verdadeira.   
+
+------------------------------------------------------------------
+
+Questão 2 - Escopo de Variáveis: O printf final gera erro porque a variável soma foi declarada internamente no laço for, tornando-se invisível e fora do escopo de memória assim que o laço termina. Se a impressão ocorresse dentro do laço, a atribuição repetida de int soma = 0; zeraria o acumulador a cada ciclo, impedindo a soma matemática correta.   
+
+------------------------------------------------------------------
+
+Questão 3 - Omissões no Laço for: A execução do Trecho A imprimirá a sequência exata 36 18 9 4 2 1, uma vez que a variável inicializada sofre sucessivas divisões inteiras por 2. No Trecho B, os parênteses isolam a atribuição para garantir que a função getch() repasse seu valor para a variável antes da ocorrência da comparação relacional.   
+
+------------------------------------------------------------------
+
+Questão 4 - Desvios de Fluxo: O comando break aborta imediatamente a execução do laço e, em contextos de laços aninhados, interrompe unicamente a estrutura mais interna. O comando continue pula o resto do bloco daquela iteração e força o programa a executar imediatamente a terceira expressão de incremento do cabeçalho do for.   
+
+------------------------------------------------------------------
+
+Questão 5 - Operador Vírgula: O laço iniciará com i = 0 e j = 10, executando exatamente 5 iterações completas. O processo será encerrado quando ambos os valores igualarem a 5, invalidando a condição lógica i < j.   
+
+------------------------------------------------------------------
+
+Questão 6 - Laço Sem Corpo e Incremento: O valor numérico final da variável x impresso será 6. Como o operador de incremento é pós-fixado, ele avalia a variável original para a condição relacional e a incrementa logo na sequência; isso significa que a soma final ocorrerá mesmo quando a condição de teste 5 < 5 resultar em falso.   
+------------------------------------------------------------------
