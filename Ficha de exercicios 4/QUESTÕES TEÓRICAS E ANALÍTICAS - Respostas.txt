@@ -1,0 +1,60 @@
+PARTE I: QUESTÕES TEÓRICAS E ANALÍTICAS
+
+Questão 01.
+a) O comando if (x = 0) realiza uma atribuição em vez de uma comparação. A variável x recebe o valor 0. Como o resultado da atribuição é o próprio valor (0, que em C significa falso), o bloco de código do if será ignorado.
+b) Na Linguagem C (antes do C99), valores numéricos são tratados diretamente como booleanos. O valor 0 é avaliado como falso e qualquer valor diferente de zero (positivo ou negativo) é verdadeiro.
+c) A instrução if (x = -5) atribui -5 a x. Como -5 é diferente de zero, a expressão é avaliada como verdadeira e o bloco de código associado SERÁ executado.
+
+Questão 02.
+a) Será impressa a mensagem "Opção B". Como y = 5, a condição y > 10 é falsa.
+b) A regra do "dangling else" define que um else é sempre associado ao if mais próximo não fechado e que esteja no mesmo bloco, independentemente da indentação.
+c) Código reescrito:
+if (x > 10) {
+    if (y > 10) {
+        printf("Opcao A\n");
+    }
+} else {
+    printf("Opcao B\n");
+}
+
+Questão 03.
+a) A segunda linha utiliza o operador ternário: avalia (media >= 7.0). Se verdadeiro, resulta em A, senão em R. Com media = 6.8 (falsa), a variável situacao recebe R.
+b) 
+if (media >= 7.0) {
+    situacao = 'A';
+} else {
+    situacao = 'R';
+}
+c) O operador ternário não substitui o if-else em todos os casos. Ele deve obrigatoriamente retornar um valor e não é adequado para executar múltiplos comandos estruturados ou lógicas complexas que não exijam uma atribuição direta.
+
+Questão 04.
+a) Saída exata:
+Prata
+Ouro
+Sem Medalha
+Isso ocorre devido ao "fall-through". Como não há comandos break interrompendo a execução nos cases 2 e 3, o programa continua executando todas as instruções subsequentes.
+b) O comando break interrompe a execução do bloco switch imediatamente, evitando o fenômeno de cascata (fall-through).
+c) O argumento do switch permite apenas tipos integrais (int, char, enum). Não é permitido usar float ou double pois o switch realiza verificações de igualdade estrita, o que sofre de imprecisão binária no uso de ponto flutuante.
+
+Questão 05.
+a) Saída exata: a = 0, b = 5, c = 8. O incremento ++b foi ignorado.
+b) Na avaliação de curto-circuito do AND (&&), se o primeiro operando for falso, o segundo não é avaliado. No OR (||), se o primeiro for verdadeiro, o segundo não é avaliado.
+c) Se fosse a == 0 || ++b > 5: a == 0 seria verdadeiro. Pelo curto-circuito do ||, ++b > 5 seria ignorado (b continuaria 5). A expressão entraria no bloco if, resultando em c = 20.
+
+Questão 06.
+a) Saída para idade = 65:
+Idoso
+Adulto
+Jovem
+Ocorrem múltiplas impressões porque o código usa declarações if independentes. A idade 65 satisfaz a todas essas três condições isoladamente.
+b) Vários comandos if independentes avaliam todas as condições. Uma cadeia else-if encerra as avaliações no momento em que encontra a primeira condição verdadeira, não rodando as subsequentes.
+c) Código reescrito:
+if (idade >= 60) {
+    printf("Idoso\n");
+} else if (idade >= 18) {
+    printf("Adulto\n");
+} else if (idade >= 12) {
+    printf("Jovem\n");
+} else {
+    printf("Criança\n");
+}
